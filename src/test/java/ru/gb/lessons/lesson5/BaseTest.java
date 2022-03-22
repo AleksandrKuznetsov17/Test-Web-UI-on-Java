@@ -10,8 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     protected WebDriver webDriver;
-    public final String LOGIN = "autosupertravel@yandex.ru";
-    public final String PASSWORD = "12345678";
 
     @BeforeEach
     void setUp() {
