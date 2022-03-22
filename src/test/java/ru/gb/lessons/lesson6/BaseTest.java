@@ -1,8 +1,9 @@
-package ru.gb.lessons.lesson5;
+package ru.gb.lessons.lesson6;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -19,6 +20,8 @@ public class BaseTest {
         chromeOptions.addArguments("--blink-settings=imagesEnabled=false");
         webDriver = WebDriverManager.chromedriver().capabilities(chromeOptions).create();
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        webDriver.get("https://pop-music.ru/");
+        webDriver.manage().window().setSize(new Dimension(2000, 1500));
     }
 
     @AfterEach
