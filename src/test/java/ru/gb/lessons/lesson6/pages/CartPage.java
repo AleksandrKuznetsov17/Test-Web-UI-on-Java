@@ -1,5 +1,6 @@
 package ru.gb.lessons.lesson6.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,6 +14,7 @@ public class CartPage extends BasePage {
         super(webDriver);
     }
 
+    @Step("Проверить, что в корзине продукты: {productNames}")
     public void checkCartContainsProducts(String... productNames) {
         List<String> actualProductsInCart = webDriver.findElement(By.className("cart-table"))
                 .findElements(By.xpath("./div"))

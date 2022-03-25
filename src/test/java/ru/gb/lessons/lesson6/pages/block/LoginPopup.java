@@ -1,11 +1,13 @@
 package ru.gb.lessons.lesson6.pages.block;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WrapsElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.gb.lessons.lesson6.pojo.User;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,6 +25,12 @@ public class LoginPopup implements WrapsElement {
         return self;
     }
 
+    @Step("Авторизоваться юзером {user.login} {user.password}")
+    public MainHeader login(User user) {
+        return login(user.getLogin(), user.getPassword());
+    }
+
+    @Step("Авторизоваться юзером {login} {password}")
     public MainHeader login(String login, String password) {
         getWrappedElement().findElement(By.name("USER_LOGIN")).sendKeys(login);
         getWrappedElement().findElement(By.name("USER_PASSWORD")).sendKeys(password);
