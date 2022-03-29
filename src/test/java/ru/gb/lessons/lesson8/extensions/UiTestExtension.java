@@ -15,12 +15,13 @@ import ru.gb.lessons.lesson8.pojo.User;
 import java.util.logging.Level;
 
 import static com.codeborne.selenide.Selenide.open;
+import static ru.gb.lessons.lesson8.config.TestConfig.testConfig;
 
 public class UiTestExtension implements BeforeAllCallback, AfterEachCallback, BeforeEachCallback {
 
 
-    public final static String LOGIN = "autosupertravel@yandex.ru";
-    public final static String PASSWORD = "12345678";
+    public final static String LOGIN = testConfig.login();
+    public final static String PASSWORD = testConfig.password();
     public final static User user = new User(LOGIN, PASSWORD);
 
     @Override
@@ -32,7 +33,7 @@ public class UiTestExtension implements BeforeAllCallback, AfterEachCallback, Be
 
     @Override
     public void beforeAll(ExtensionContext extensionContext) throws Exception {
-        Configuration.baseUrl = "https://pop-music.ru/";
+        Configuration.baseUrl = testConfig.url();
         Configuration.timeout = 5000;
         Configuration.browser = "chrome";
         Configuration.browserSize = "2000x1500";
